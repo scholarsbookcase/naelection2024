@@ -1,103 +1,54 @@
-<!DOCTYPE html>  
-<html lang="US">
 <head>
-  <script>script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.0.2/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.0.2/papaparse.min.js"></script>
   <script>
   fetch('https://scholarsbookcase.github.io/naelection2024/poll_list.csv')
     .then(response => response.text())
     .then(csvString => {
-        const data = Papa.parse(csvString, { header: true }).data;
+        const data = Papa.parse(csvString, { header: true, skipEmptyLines: true }).data; // Ensure empty lines are skipped
         let tableHtml = "<table>";
+        const headers = Object.keys(data[0]);
+        
         // Generate table headers
         tableHtml += "<tr>";
-        Object.keys(data[0]).forEach(header => {
+        headers.forEach(header => {
             tableHtml += `<th>${header}</th>`;
         });
         tableHtml += "</tr>";
+        
         // Generate table rows
         data.forEach(row => {
-            tableHtml += "<tr>";
-            Object.values(row).forEach(cell => {
-                tableHtml += `<td>${cell}</td>`;
-            });
-            tableHtml += "</tr>";
+            if (row && Object.keys(row).length) { // Check if row is defined and has data
+                tableHtml += "<tr>";
+                headers.forEach(header => {
+                    let cellContent = row[header];
+                    // Ensure cellContent is defined to avoid 'undefined' values
+                    if (cellContent) {
+                        // Check if the cell is in 'URL' column and not 'NA'
+                        if (header === 'URL' && cellContent !== 'NA') {
+                            // Make the content a clickable link
+                            cellContent = `<a href="${cellContent}" target="_blank">여심위 등록 여론조사 페이지 바로가기</a>`;
+                        } else if (cellContent === 'NA') {
+                            // Replace 'NA' with a blank space
+                            cellContent = '';
+                        }
+                    } else {
+                        // If cellContent is undefined or empty, ensure it is set to an empty string
+                        cellContent = '';
+                    }
+                    tableHtml += `<td>${cellContent}</td>`;
+                });
+                tableHtml += "</tr>";
+            }
         });
         tableHtml += "</table>";
         document.body.innerHTML += tableHtml; // Append the table to the body or a specific element
     });
-</script>
+  </script>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>제22대 국회의원 선거 여론조사 통합지표</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style id="mkstylesheet">
-@charset "UTF-8";
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-/* Tufte CSS styles */
-html {
-    font-size: 17px;
-    line-height: 1.5;
-}
-
-body {
-    width: 85%;
-    font-family: "Noto Sans Kr", sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px;
-    text-align: justify;
-}
-
-.aspect-ratio {
-  position: relative;
-  width: 117%;
-  height: 0;
-  padding-bottom: 68.2%; /* The height of the item will now be 56.25% of the width. */
-  margin-left: -10%;
-}
-
-/* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
-.aspect-ratio iframe {
-  position: absolute;
-  display: block;
-  border-style:none;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-
-iframe {
-  display: block;
-  border-style:none;
-}
-
-</style>
-</head>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>-</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
-
+  <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
 </body>
-</html>
