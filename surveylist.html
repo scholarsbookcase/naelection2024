@@ -1,4 +1,29 @@
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GB34JC335V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GB34JC335V');
+    window.addEventListener('load', function(e) {
+
+    window.applicationCache.addEventListener('updateready', function(e) {
+    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+      // Browser downloaded a new app cache.
+      // Swap it in and reload the page to get the new hotness.
+      window.applicationCache.swapCache();
+      if (confirm('A new version of this site is available. Load it?')) {
+        window.location.reload();
+      }
+    } else {
+      // Manifest didn't changed. Nothing new to server.
+    }
+    }, false);
+
+    }, false);
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.0.2/papaparse.min.js"></script>
   <script>
   fetch('https://scholarsbookcase.github.io/naelection2024/poll_list.csv')
@@ -26,7 +51,7 @@
                         // Check if the cell is in 'URL' column and not 'NA'
                         if (header === 'URL' && cellContent !== 'NA') {
                             // Make the content a clickable link
-                            cellContent = `<a href="${cellContent}" target="_blank">여심위 게재 사항 자세히 보기</a>`;
+                            cellContent = `<a href="${cellContent}" target="_blank">여심위 등재 사항 자세히 보기</a>`;
                         } else if (cellContent === 'NA') {
                             // Replace 'NA' with a blank space
                             cellContent = '';
