@@ -1,5 +1,11 @@
 body {
     font-family: Arial, sans-serif;
+    max-width: 1400px;
+    
+}
+
+html {
+    font-size: 12px;
 }
 
 table {
@@ -24,4 +30,8 @@ tr:hover {
 
 tr:nth-child(even) {
     background-color: #f9f9f9; /* Very light grey, for zebra striping */
+}
+
+.small-font-table {
+    font-size: 14px; /* Or any other size */
 }
