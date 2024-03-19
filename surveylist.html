@@ -51,7 +51,7 @@
                         // Check if the cell is in 'URL' column and not 'NA'
                         if (header === 'URL' && cellContent !== 'NA') {
                             // Make the content a clickable link
-                            cellContent = `<a href="${cellContent}" target="_blank">여심위 등재 사항 자세히 보기</a>`;
+                            cellContent = `<a href="${cellContent}" target="_blank">여심위 등재 사항 보러가기</a>`;
                         } else if (cellContent === 'NA') {
                             // Replace 'NA' with a blank space
                             cellContent = '';
