@@ -1,4 +1,5 @@
 "등록번호","조사기관","조사의뢰자","시작일","종료일","포함","여론조사 미포함 사유","투표의지층 조사","투표의지층 조사 미포함 사유","URL"
+12954,"알앤써치","알앤써치",2024-03-21,2024-03-22,"Y",NA,"N","투표의지 묻는 문항 없음","https://nesdc.go.kr/portal/bbs/B0000005/view.do?nttId=14615&menuNo=200467&searchTime=&sdate=&edate=&pdate=&pollGubuncd=&searchCnd=&searchWrd=&pageIndex=1"
 12950,"한국갤럽","한국갤럽",2024-03-19,2024-03-21,"Y",NA,"N","교차통계표에 투표의지 항목 미포함","https://nesdc.go.kr/portal/bbs/B0000005/view.do?nttId=14607&menuNo=200467&searchTime=&sdate=&edate=&pdate=&pollGubuncd=&searchCnd=&searchWrd=&pageIndex=1"
 12921,"한국리서치","전국지표조사(NBS)",2024-03-18,2024-03-20,"Y",NA,"Y",NA,"https://nesdc.go.kr/portal/bbs/B0000005/view.do?nttId=14577&menuNo=200467&searchTime=&sdate=&edate=&pdate=&pollGubuncd=&searchCnd=&searchWrd=&pageIndex=1"
 12913,"한국리서치","KBS",2024-03-17,2024-03-19,"Y",NA,"Y",NA,"https://nesdc.go.kr/portal/bbs/B0000005/view.do?nttId=14570&menuNo=200467&searchTime=&sdate=&edate=&pdate=&pollGubuncd=&searchCnd=&searchWrd=&pageIndex=1"
